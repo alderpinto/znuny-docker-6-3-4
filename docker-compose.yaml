@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  znuny:
+    image: docker-znuny-7:latest
+    restart: always
+    container_name: znuny
+    ports:
+#      - 443:443
+      - 8080:80
+      - 8081:81
+    env_file: .env      
+    volumes:
+#      - ./letsencrypt:/etc/letsencrypt
+#      - ./Config.pm:/opt/otrs/Kernel/Config.pm
+      - ./init:/app
+      - ./app:/opt/otrs
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: mjeffomybyov7xffcba6
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+volumes:
+  postgres:
