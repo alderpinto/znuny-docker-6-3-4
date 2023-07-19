@@ -1,6 +1,6 @@
 
 DOCKER_ID ?= alderpinto
-IMAGE = znuny
+IMAGE = znuny7
 VERSION ?= latest
 
 .PHONY: build
