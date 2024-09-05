@@ -1,11 +1,11 @@
 version: "3.8"
 
 services:
-###Iniciar página: http://localhost:8880/otrs/index.pl
+###Iniciar página: http://localhost:8880/otrs/index.pl 
 ###Usuário: root@localhost
-###Senha: GVYskvEXNPxLcu4V
+###Senha: cXldfmKMtLAT4FGD
   znuny:
-    image: alderpinto/znuny7:latest
+    image: alderpinto/znuny-lts:6.3.4
     restart: always
     container_name: znuny
     ports:
@@ -17,12 +17,12 @@ services:
 #      - ./letsencrypt:/etc/letsencrypt
 #      - ./Config.pm:/opt/otrs/Kernel/Config.pm
       - ./init:/app
-      - ./app:/opt/znuny
+      - ./app:/opt/otrs
     depends_on:
       - postgres
   postgres:
-###Usuário: znuny
-###Senha: QNq6ieatFB9i2niW  
+###Usuário: otrs
+###Senha: G9MB0dCQ72wlnHpu  
     image: postgres:15
     container_name: postgres
     restart: always
